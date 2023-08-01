@@ -12,7 +12,8 @@ SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t
 
 ## Strategy
 
-- Convert hex to binary
+- Convert hex to Decoded String
+- Convert String to Base64
 
 ## Explanation
 
@@ -35,6 +36,6 @@ For example, `I'm` is represented by the bytes `73 39 109`, which in binary is `
 
 ![Conversion Image](image.png)
 
-### Decoded
+## Success
 
 ![Decoded Image](decoded.png)
