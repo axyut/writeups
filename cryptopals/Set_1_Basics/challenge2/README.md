@@ -17,4 +17,10 @@ If your function works properly, then when you feed it the string:
 
 ## Strategy
 
--
+- Convert the hex strings to byte arrays
+- XOR Encrypt the byte arrays
+- Hex encode the byte array
+
+## Decoded
+
+![Decoded](decoded.png)
