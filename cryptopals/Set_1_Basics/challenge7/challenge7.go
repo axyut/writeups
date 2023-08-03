@@ -1,23 +1,25 @@
-package main
+package challenge7
 
 import (
 	"crypto/aes"
-	"encoding/base64"
 	"fmt"
 	"os"
+
 	//"strings"
+	c1 "github.com/axyut/cryptopals/challenge1"
 )
 
-func main() {
+func Challenge7() {
 	key := []byte("YELLOW SUBMARINE")
-	file, err := os.ReadFile("7.txt")
+	file, err := os.ReadFile("./challenge7/7.txt")
 	//fmt.Printf("%s", file)
 	if err != nil {
+		fmt.Printf("%s", err)
 		return
 	}
 	//lines := strings.Split(string(file), "\n")
 	bitByte := []byte(file)
-	decoded := DecodeOne(bitByte)
+	decoded := c1.DecodeBase64(bitByte)
 
 	ecb, err := decryptAESECB(decoded, key, 16)
 	if err != nil {
@@ -40,14 +42,4 @@ func decryptAESECB(cipherText []byte, key []byte, blockSize int) ([]byte, error)
 	}
 
 	return plainText, nil
-}
-
-func DecodeOne(input []byte) []byte {
-	decoded := make([]byte, base64.RawStdEncoding.DecodedLen(len(input)))
-	_, err := base64.RawStdEncoding.Decode(decoded, input)
-	if err != nil {
-		fmt.Printf("%s", err)
-		return nil
-	}
-	return decoded
 }

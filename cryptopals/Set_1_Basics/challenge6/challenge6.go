@@ -1,4 +1,4 @@
-package main
+package challenge6
 
 import (
 	"encoding/base64"
@@ -13,7 +13,7 @@ base64d after being encrypted with repeaating key xor
 
 */
 
-func main() {
+func Challenge6() {
 
 	// byteSend := []byte("HUIfTQsPAh9PE048GmllH0kcDk4TAQsHThsBFkU2AB4BSWQgVB0dQzNTTmVS")
 	// output := DecodeOne(byteSend)
@@ -123,6 +123,8 @@ func DecodeOne(input []byte) []byte {
 	return decoded
 }
 
+// The Hamming Distance (or edit distance) is the number of differing bits between two buffers
+// This is computed by XORing the two buffers and adding up the bits in the resultant buffer.
 func hammingDistance(a, b []byte) int {
 
 	diff := 0
@@ -139,49 +141,49 @@ func hammingDistance(a, b []byte) int {
 	return diff
 }
 
-func EncryptXORRepeatingKeyThenBase64(payload, key []byte) []byte {
-	cipher := make([]byte, len(payload))
-	for i := 0; i < len(payload); i++ {
-		cipher[i] = payload[i] ^ key[i%len(key)]
-	}
-	encoded := make([]byte, base64.RawStdEncoding.EncodedLen((len(cipher))))
-	base64.RawStdEncoding.Encode(encoded, cipher)
-	return encoded
-}
+// func EncryptXORRepeatingKeyThenBase64(payload, key []byte) []byte {
+// 	cipher := make([]byte, len(payload))
+// 	for i := 0; i < len(payload); i++ {
+// 		cipher[i] = payload[i] ^ key[i%len(key)]
+// 	}
+// 	encoded := make([]byte, base64.RawStdEncoding.EncodedLen((len(cipher))))
+// 	base64.RawStdEncoding.Encode(encoded, cipher)
+// 	return encoded
+// }
 
-func findKeySizes(ciphertext []byte) []int {
-	minKeySize := 2
-	maxKeySize := 40
+// func findKeySizes(ciphertext []byte) []int {
+// 	minKeySize := 2
+// 	maxKeySize := 40
 
-	type keySizeDistance struct {
-		KeySize  int
-		Distance float64
-	}
+// 	type keySizeDistance struct {
+// 		KeySize  int
+// 		Distance float64
+// 	}
 
-	var probableKeySizes []keySizeDistance
+// 	var probableKeySizes []keySizeDistance
 
-	for keySize := minKeySize; keySize <= maxKeySize; keySize++ {
-		if len(ciphertext) < keySize*2 {
-			continue // Skip this key size if not enough data for slicing
-		}
+// 	for keySize := minKeySize; keySize <= maxKeySize; keySize++ {
+// 		if len(ciphertext) < keySize*2 {
+// 			continue // Skip this key size if not enough data for slicing
+// 		}
 
-		firstChunk := ciphertext[:keySize]
-		secondChunk := ciphertext[keySize : keySize*2]
+// 		firstChunk := ciphertext[:keySize]
+// 		secondChunk := ciphertext[keySize : keySize*2]
 
-		distance := float64(hammingDistance(firstChunk, secondChunk)) / float64(keySize)
-		probableKeySizes = append(probableKeySizes, keySizeDistance{KeySize: keySize, Distance: distance})
-	}
+// 		distance := float64(hammingDistance(firstChunk, secondChunk)) / float64(keySize)
+// 		probableKeySizes = append(probableKeySizes, keySizeDistance{KeySize: keySize, Distance: distance})
+// 	}
 
-	// Sort the probableKeySizes by distance (ascending order)
-	sort.Slice(probableKeySizes, func(i, j int) bool {
-		return probableKeySizes[i].Distance < probableKeySizes[j].Distance
-	})
+// 	// Sort the probableKeySizes by distance (ascending order)
+// 	sort.Slice(probableKeySizes, func(i, j int) bool {
+// 		return probableKeySizes[i].Distance < probableKeySizes[j].Distance
+// 	})
 
-	// Extract the key sizes from probableKeySizes
-	var keySizes []int
-	for _, ks := range probableKeySizes {
-		keySizes = append(keySizes, ks.KeySize)
-	}
+// 	// Extract the key sizes from probableKeySizes
+// 	var keySizes []int
+// 	for _, ks := range probableKeySizes {
+// 		keySizes = append(keySizes, ks.KeySize)
+// 	}
 
-	return keySizes
-}
+// 	return keySizes
+// }

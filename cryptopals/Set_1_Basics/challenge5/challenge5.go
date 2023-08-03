@@ -1,18 +1,18 @@
-package main
+package challenge5
 
 import (
-	"encoding/hex"
 	"fmt"
+
+	c1 "github.com/axyut/cryptopals/challenge1"
 )
 
-func main() {
+func Challenge5() {
 	plaintext := []byte(`Burning 'em, if you ain't quick and nimble
 I go crazy when I hear a cymbal`)
 
 	value := EncryptWithRepeatingKey(plaintext, []byte("ICE"))
 
-	encoded := make([]byte, hex.EncodedLen(len(value)))
-	hex.Encode(encoded, value)
+	encoded := c1.EncodeHex(value)
 
 	fmt.Printf("%s", encoded)
 }

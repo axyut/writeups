@@ -1,14 +1,15 @@
-package main
+package challenge8
 
 import (
-	"encoding/hex"
 	"fmt"
 	"os"
 	"strings"
+
+	c1 "github.com/axyut/cryptopals/challenge1"
 )
 
-func main() {
-	file, err := os.ReadFile("8.txt")
+func Challenge8() {
+	file, err := os.ReadFile("./challenge8/8.txt")
 	if err != nil {
 		fmt.Printf("%s", err)
 		return
@@ -17,7 +18,7 @@ func main() {
 	aess := make(map[int]bool)
 	for i, line := range lines {
 		bitByte := []byte(line)
-		decoded := HexDecode(bitByte)
+		decoded := c1.DecodeHex(bitByte)
 		status := IsAesEcb(decoded)
 		fmt.Printf("Line. %d: %t\n", i, status)
 		if status == true {
@@ -27,12 +28,6 @@ func main() {
 	for i, v := range aess {
 		fmt.Printf("\nAES Ciphers Detected. \nLine. %d: %t", i, v)
 	}
-}
-
-func HexDecode(in []byte) []byte {
-	decoded := make([]byte, hex.DecodedLen(len(in)))
-	hex.Decode(decoded, in)
-	return decoded
 }
 
 func IsAesEcb(line []byte) bool {

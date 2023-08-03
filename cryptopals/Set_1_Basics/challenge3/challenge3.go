@@ -1,8 +1,9 @@
-package main
+package challenge3
 
 import (
-	"encoding/hex"
 	"fmt"
+
+	c1 "github.com/axyut/cryptopals/challenge1"
 )
 
 /*
@@ -69,7 +70,7 @@ func charFreq(char byte) float32 {
 	return wm[char]
 }
 
-func main() {
+func Challenge3() {
 	input1 := []byte("1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736")
 	answer, score, err := SingleXorCipher(input1)
 	if err != nil {
@@ -80,7 +81,7 @@ func main() {
 }
 
 func SingleXorCipher(codedMessage []byte) ([]byte, float32, error) {
-	raw := HexDecode(codedMessage)
+	raw := c1.DecodeHex(codedMessage)
 	var answer []byte
 	var score float32
 	for i := 0; i < 256; i++ {
@@ -98,16 +99,4 @@ func SingleXorCipher(codedMessage []byte) ([]byte, float32, error) {
 		tempSc = 0
 	}
 	return answer, score, nil
-}
-
-// Decoding form Hex
-func HexDecode(hexEncoded []byte) []byte {
-	decoded := make([]byte, hex.DecodedLen(len(hexEncoded)))
-
-	_, err := hex.Decode(decoded, hexEncoded)
-	if err != nil {
-		fmt.Printf("Failed to decode hex: %s", err)
-		return nil
-	}
-	return decoded
 }
