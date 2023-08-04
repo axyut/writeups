@@ -13,12 +13,12 @@ import (
 )
 
 func main() {
-	//c1.challenge1()
+	//c1.Challenge1()
 	//c2.Challenge2()
-	//c3.challenge3()
+	//c3.Challenge3()
 	//c4.Challenge4()
 	//c5.Challenge5()
-	c6.Challenge6()
+	c6.CryptoPals()
 	//c7.Challenge7()
 	//c8.Challenge8()
 }

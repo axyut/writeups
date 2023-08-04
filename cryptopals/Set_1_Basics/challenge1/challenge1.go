@@ -23,7 +23,7 @@ func DecodeHex(input []byte) []byte {
 
 	_, err := hex.Decode(decoded, input)
 	if err != nil {
-		fmt.Printf("Failed to decode hex: %s", err)
+		fmt.Printf("\nError:%s\n", err)
 		return nil
 	}
 	return decoded
@@ -45,7 +45,7 @@ func DecodeBase64(input []byte) []byte {
 	decoded := make([]byte, base64.RawStdEncoding.DecodedLen(len(input)))
 	_, err := base64.RawStdEncoding.Decode(decoded, input)
 	if err != nil {
-		fmt.Printf("%s", err)
+		fmt.Printf("\nError:%s\n", err)
 		return nil
 	}
 	return decoded
