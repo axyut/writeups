@@ -2,6 +2,7 @@ package challenge7
 
 import (
 	"crypto/aes"
+	"crypto/cipher"
 	"fmt"
 	"os"
 
@@ -21,14 +22,14 @@ func Challenge7() {
 	bitByte := []byte(file)
 	decoded := c1.DecodeBase64(bitByte)
 
-	ecb, err := decryptAESECB(decoded, key, 16)
+	ecb, err := DecryptAES_ECB(decoded, key, 16)
 	if err != nil {
 		return
 	}
 	fmt.Printf("%s", ecb)
 }
 
-func decryptAESECB(cipherText []byte, key []byte, blockSize int) ([]byte, error) {
+func DecryptAES_ECB(cipherText []byte, key []byte, blockSize int) ([]byte, error) {
 	plainText := make([]byte, len(cipherText))
 	cipher, err := aes.NewCipher(key)
 	if err != nil {
@@ -42,4 +43,17 @@ func decryptAESECB(cipherText []byte, key []byte, blockSize int) ([]byte, error)
 	}
 
 	return plainText, nil
+}
+
+// ECBDecrypt assumes that dst and src of the same length
+func EncryptAES_ECB(block cipher.Block, dst, src []byte) {
+	if len(src) != len(dst) {
+		panic("src and dst lengths do not match")
+	}
+	sz := block.BlockSize()
+	for i := 0; i < len(src)/sz; i++ {
+		from := i * sz
+		to := (i + 1) * sz
+		block.Encrypt(dst[from:to], src[from:to])
+	}
 }

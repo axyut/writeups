@@ -22,7 +22,7 @@ func Challenge10() {
 		log.Fatal(err)
 	}
 	IV := make([]byte, len(key))
-	CBCDecrypt(block, IV, pt, ct)
+	Decrypt_CBC(block, IV, pt, ct)
 	fmt.Printf("pt = %s\n", string(pt))
 
 	// check that if we encrypt and then descrypt the result we would get the
@@ -35,7 +35,7 @@ func Challenge10() {
 	// fmt.Println(bytes.Compare(pt, pt2) == 0)
 }
 
-func CBCEncrypt(block cipher.Block, IV, dst, src []byte) {
+func Encrypt_CBC(block cipher.Block, IV, dst, src []byte) {
 	size := block.BlockSize()
 	if size != len(IV) {
 		panic("IV length should be equal to block size")
@@ -60,7 +60,7 @@ func CBCEncrypt(block cipher.Block, IV, dst, src []byte) {
 	}
 }
 
-func CBCDecrypt(block cipher.Block, IV, dst, src []byte) {
+func Decrypt_CBC(block cipher.Block, IV, dst, src []byte) {
 	size := block.BlockSize()
 	if size != len(IV) {
 		panic("IV length should be equal to block size")
