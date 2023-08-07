@@ -9,7 +9,7 @@ import (
 )
 
 func Challenge8() {
-	file, err := os.ReadFile("./challenge8/8.txt")
+	file, err := os.ReadFile("./Set1/challenge8/8.txt")
 	if err != nil {
 		fmt.Printf("%s", err)
 		return

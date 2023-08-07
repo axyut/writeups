@@ -73,7 +73,7 @@ func charFreq(char byte) float32 {
 }
 
 func Challenge4() {
-	answer, err := DecodeFromFile("./challenge4/4.txt")
+	answer, err := DecodeFromFile("./Set1/challenge4/4.txt")
 	if err != nil {
 		fmt.Printf("Error Encountered: %s", err)
 		return

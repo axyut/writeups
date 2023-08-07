@@ -11,7 +11,7 @@ import (
 
 func Challenge7() {
 	key := []byte("YELLOW SUBMARINE")
-	file, err := os.ReadFile("./challenge7/7.txt")
+	file, err := os.ReadFile("./Set1/challenge7/7.txt")
 	//fmt.Printf("%s", file)
 	if err != nil {
 		fmt.Printf("%s", err)

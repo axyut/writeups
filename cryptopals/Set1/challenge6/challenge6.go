@@ -22,7 +22,7 @@ func Challenge6() {
 	dist := HammingDistance(a, b)
 	fmt.Printf("%d", dist)
 
-	fileBytes, err := Decodebase64LineByLine("./challenge6/6.txt")
+	fileBytes, err := Decodebase64LineByLine("./Set1/challenge6/6.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
