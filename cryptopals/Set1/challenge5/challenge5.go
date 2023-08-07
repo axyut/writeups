@@ -3,7 +3,7 @@ package challenge5
 import (
 	"fmt"
 
-	c1 "github.com/axyut/cryptopals/challenge1"
+	c1 "cryptopals/Set1/challenge1"
 )
 
 func Challenge5() {

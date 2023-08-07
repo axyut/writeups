@@ -19,3 +19,8 @@ There are eight sets which get progressively harder. Some of the attacks are cle
 ## [Set 8: Abstract Algebra](https://cryptopals.com/sets/8)
 
 I have done the first two sets. I will be doing the rest of the sets in the future. I will be documenting my progress in this repository. Mosts of the set's solution are written in Golang, javascript and Python.
+
+# How to Run
+
+- Uncomment the specific challenge import and call to the function you want to run in `main.go` at root of project.
+- Run `go run *.go` from root of project. For windwows, run `go run .` from root of project.

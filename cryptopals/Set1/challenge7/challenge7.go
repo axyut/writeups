@@ -6,7 +6,7 @@ import (
 	"os"
 
 	//"strings"
-	c1 "github.com/axyut/cryptopals/challenge1"
+	c1 "cryptopals/Set1/challenge1"
 )
 
 func Challenge7() {

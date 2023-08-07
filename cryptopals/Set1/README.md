@@ -15,8 +15,3 @@
 ## [Challenge 7: AES in ECB mode](https://cryptopals.com/sets/1/challenges/7)
 
 ## [Challenge 8: Detect AES in ECB mode](https://cryptopals.com/sets/1/challenges/8)
-
-# How to Run
-
-- Uncomment the specific challenge import and call to the function you want to run in `main.go` at root of project.
-- Run `go run *.go` from root of project.

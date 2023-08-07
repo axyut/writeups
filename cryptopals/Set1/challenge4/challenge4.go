@@ -1,9 +1,11 @@
-package challenge3
+package challenge4
 
 import (
 	"fmt"
+	"os"
+	"strings"
 
-	c1 "github.com/axyut/cryptopals/challenge1"
+	c1 "cryptopals/Set1/challenge1"
 )
 
 /*
@@ -11,8 +13,8 @@ XORed against a single string, find the character
 1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736
 */
 
-func charFreq(char byte) float64 {
-	wm := map[byte]float64{
+func charFreq(char byte) float32 {
+	wm := map[byte]float32{
 		byte('E'): 12.02,
 		byte('T'): 9.10,
 		byte('A'): 8.12,
@@ -70,22 +72,44 @@ func charFreq(char byte) float64 {
 	return wm[char]
 }
 
-func Challenge3() {
-	input1 := []byte("1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736")
-
-	raw := c1.DecodeHex(input1)
-	fmt.Printf("Raw string:%s\n", raw)
-
-	answer, score := SingleXorCipher(raw)
-	fmt.Printf("Answer:%s\nScore:%f", answer, score)
+func Challenge4() {
+	answer, err := DecodeFromFile("./challenge4/4.txt")
+	if err != nil {
+		fmt.Printf("Error Encountered: %s", err)
+		return
+	}
+	fmt.Printf("Answer:%s", answer)
 }
 
-func SingleXorCipher(raw []byte) ([]byte, float64) {
+func DecodeFromFile(file string) ([]byte, error) {
+	f, err := os.ReadFile(file)
+	if err != nil {
+		return nil, err
+	}
+	lines := strings.Split(string(f), "\n")
 	var answer []byte
-	var score float64
+	var score float32
+	for i, line := range lines {
+		ans, tempScore, err := SingleXorCipher([]byte(line))
+		if err != nil {
+			return nil, err
+		}
+		fmt.Printf("Checking line %d, Score: %f\n", i, tempScore)
+		if tempScore > score {
+			answer = ans
+			score = tempScore
+		}
+	}
+	return answer, nil
+}
+
+func SingleXorCipher(codedMessage []byte) ([]byte, float32, error) {
+	raw := c1.DecodeHex(codedMessage)
+	var answer []byte
+	var score float32
 	for i := 0; i < 256; i++ {
 		tempAns := make([]byte, len(raw))
-		var tempSc float64
+		var tempSc float32
 		for j := 0; j < len(raw); j++ {
 			c := raw[j] ^ byte(i)
 			tempSc += charFreq(c)
@@ -97,5 +121,5 @@ func SingleXorCipher(raw []byte) ([]byte, float64) {
 		}
 		tempSc = 0
 	}
-	return answer, score
+	return answer, score, nil
 }

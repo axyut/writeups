@@ -1,8 +1,8 @@
-package main
+package challenge9
 
 import "fmt"
 
-func main() {
+func Challenge9() {
 	input := []byte("YELLOW SUBMARINE")
 	padded := PKCS(input, 20)
 	fmt.Printf("No padding: %q\n", input)
