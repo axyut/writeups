@@ -20,22 +20,26 @@ func Challenge11() {
 	for i := 0; i < len(cipher)/ks; i++ {
 		fmt.Printf("%s\n", hex.EncodeToString(cipher[i*ks:(i+1)*ks]))
 	}
-	ecb := false
-	for i := 0; i < len(cipher)/ks-1; i++ {
-		for j := i + 1; j < len(cipher)/ks; j++ {
-			a := cipher[i*ks : (i+1)*ks]
-			b := cipher[j*ks : (j+1)*ks]
-			if bytes.Equal(a, b) {
-				ecb = true
-			}
-		}
-	}
+	ecb := IsECB(cipher, ks)
 
 	if ecb {
 		fmt.Printf("Actual: %s, Detected: ECB", actual)
 	} else {
 		fmt.Printf("Actual: %s, Detected: CBC", actual)
 	}
+}
+
+func IsECB(cipher []byte, ks int) bool {
+	for i := 0; i < len(cipher)/ks-1; i++ {
+		for j := i + 1; j < len(cipher)/ks; j++ {
+			a := cipher[i*ks : (i+1)*ks]
+			b := cipher[j*ks : (j+1)*ks]
+			if bytes.Equal(a, b) {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 func ECBCBC_EncryptOracle(input []byte) ([]byte, string) {
