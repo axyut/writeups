@@ -13,7 +13,8 @@ import (
 	//c9 "cryptopals/Set2/challenge9"
 	//c10 "cryptopals/Set2/challenge10"
 	//c11 "cryptopals/Set2/challenge11"
-	c12 "cryptopals/Set2/challenge12"
+	//c12 "cryptopals/Set2/challenge12"
+	c13 "cryptopals/Set2/challenge13"
 )
 
 func main() {
@@ -32,5 +33,6 @@ func main() {
 	//c9.Challenge9()
 	//c10.Challenge10()
 	//c11.Challenge11()
-	c12.Challenge12()
+	//c12.Challenge12()
+	c13.Challenge13()
 }
