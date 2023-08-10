@@ -1,17 +1,17 @@
 # Set 2: Block Crypto
 
-## [Challenge 1: Convert hex to base64](https://cryptopals.com/sets/2/challenges/9)
+## [Challenge 9: Implement PKCS#7 padding](https://cryptopals.com/sets/2/challenges/9)
 
-## [Challenge 2: Fixed XOR](https://cryptopals.com/sets/2/challenges/10)
+## [Challenge 10: Implement CBC mode](https://cryptopals.com/sets/2/challenges/10)
 
-## [Challenge 3: Single-byte XOR cipher](https://cryptopals.com/sets/2/challenges/11)
+## [Challenge 11: An ECB/CBC detection oracle](https://cryptopals.com/sets/2/challenges/11)
 
-## [Challenge 4: Detect single-character XOR](https://cryptopals.com/sets/2/challenges/12)
+## [Challenge 12: Byte-at-a-time ECB decryption (Simple)](https://cryptopals.com/sets/2/challenges/12)
 
-## [Challenge 5: Implement repeating-key XOR](https://cryptopals.com/sets/2/challenges/13)
+## [Challenge 13: ECB cut-and-paste](https://cryptopals.com/sets/2/challenges/13)
 
-## [Challenge 6: Break repeating-key XOR](https://cryptopals.com/sets/2/challenges/14)
+## [Challenge 14: Byte-at-a-time ECB decryption (Harder)](https://cryptopals.com/sets/2/challenges/14)
 
-## [Challenge 7: AES in ECB mode](https://cryptopals.com/sets/2/challenges/15)
+## [Challenge 15: PKCS#7 padding validation](https://cryptopals.com/sets/2/challenges/15)
 
-## [Challenge 8: Detect AES in ECB mode](https://cryptopals.com/sets/2/challenges/16)
+## [Challenge 16: CBC bitflipping attacks](https://cryptopals.com/sets/2/challenges/16)
