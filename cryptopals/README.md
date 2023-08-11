@@ -4,7 +4,7 @@ There are eight sets which get progressively harder. Some of the attacks are cle
 
 ## [Set 1: Basics](https://cryptopals.com/sets/1) (Completed)
 
-## [Set 2: Block crypto](https://cryptopals.com/sets/2)
+## [Set 2: Block crypto](https://cryptopals.com/sets/2) (Completed)
 
 ## [Set 3: Block and stream crypto](https://cryptopals.com/sets/3)
 
