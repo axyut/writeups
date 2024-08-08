@@ -1,5 +1,5 @@
 ---
-title: advent of cyber 2022
+title: "Advent of Cyber 2022"
 description: TryHackMe.
 ---
 

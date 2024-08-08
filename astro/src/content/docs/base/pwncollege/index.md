@@ -1,5 +1,5 @@
 ---
-title: pwn.college
+title: Pwn.College
 description: Pwn.College.
 ---
 

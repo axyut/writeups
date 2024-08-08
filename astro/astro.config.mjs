@@ -27,6 +27,12 @@ export default defineConfig({
                     },
                 },
                 {
+                    label: "[box] Base",
+                    autogenerate: {
+                        directory: "base",
+                    },
+                },
+                {
                     label: "[box] Pwns",
                     autogenerate: {
                         directory: "pwns",
