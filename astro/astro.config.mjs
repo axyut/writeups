@@ -3,8 +3,8 @@ import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://writeups.axyut.me",
-    base: "",
+    site: "https://axyut.github.io",
+    base: "/writeups",
     integrations: [
         starlight({
             favicon: "./src/assets/logo.jpg",
